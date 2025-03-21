@@ -16,14 +16,13 @@
             justify-content: center;
             min-height: 100vh;
         }
-        h1, .mensaje {
-            display: none; /* Ocultar al principio */
+        h1 {
             color: #d4a017;
             font-size: 2rem;
-            margin-top: 20px;
         }
         .mensaje {
             font-size: 1.2rem;
+            margin-top: 20px;
             color: #8a6d3b;
             max-width: 80%;
             text-align: center;
@@ -39,7 +38,8 @@
             height: auto;
         }
         audio {
-            display: none; /* Ocultar el reproductor de audio visualmente */
+            margin-top: 20px;
+            display: none; /* Oculta el reproductor de audio visualmente */
         }
         .btn {
             background-color: #d4a017;
@@ -58,45 +58,37 @@
     </style>
 </head>
 <body>
-    <!-- Solo el botón aparece al principio -->
-    <button class="btn" onclick="mostrarFlores()">🌻 Presióname 🌻</button>
-    
     <h1>💛 Para ti, mi amor 💛</h1>
     <p class="mensaje">Siempre supe que llegaría este día... con mis flores amarillas para ti. 💛</p>
+    
+    <button class="btn" onclick="mostrarFlores()">🌻 Presióname 🌻</button>
     
     <div class="flores" id="flores-container">
         <!-- Aquí solo se mostrará una imagen -->
     </div>
     
-    <audio id="cancion">
+    <audio id="cancion" controls>
         <source src="tucancion.mp3" type="audio/mp3">
         Tu navegador no soporta el audio.
     </audio>
     
     <script>
         function mostrarFlores() {
-            // Mostrar los elementos ocultos después de presionar el botón
-            document.getElementById("flores-container").style.display = "flex";
-            document.querySelector("h1").style.display = "block"; // Mostrar el título
-            document.querySelector(".mensaje").style.display = "block"; // Mostrar el mensaje
+            document.getElementById("flores-container").style.display = "flex"; // Mostrar las flores
+            document.getElementById("cancion").style.display = "none"; // Ocultar el reproductor de audio visualmente
+            document.getElementById("cancion").play(); // Reproducir la música
             
-            // Iniciar la música en segundo plano sin mostrar el reproductor
-            const audio = document.getElementById("cancion");
-            audio.play();
-            
-            // Crear y mostrar una sola imagen de las flores
             const contenedor = document.getElementById("flores-container");
             contenedor.innerHTML = ""; // Limpiar cualquier contenido previo
             
+            // Crear y mostrar una sola imagen de las flores desde la carpeta 'imagenes'
             const img = document.createElement("img");
-            img.src = "C:/Users/cisco/OneDrive/Escritorio/flores amarillas/tulipanamarillo.jpg"; // Ruta con la carpeta 'flores_amarillas'
+            img.src = "imagenes/tulipanamarillo.jpg"; // Ruta con la carpeta 'imagenes'
             img.className = "flor";
             img.alt = "Tulipán amarillo";
             contenedor.appendChild(img);
-
-            // Ocultar el botón después de hacer clic
-            document.querySelector(".btn").style.display = "none";
         }
     </script>
 </body>
 </html>
+
